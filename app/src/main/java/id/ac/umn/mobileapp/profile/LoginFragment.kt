@@ -1,5 +1,6 @@
 package id.ac.umn.mobileapp.profile
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -43,6 +45,15 @@ class LoginFragment : Fragment() {
         val passwordEditText: EditText = view.findViewById(R.id.etPassword)
         val loginButton: Button = view.findViewById(R.id.btnLogin)
 
+        val btnAccountGoogle: MaterialButton = view.findViewById(R.id.btnAccountGoogle)
+        val theme = null
+        val iconDrawable: Drawable? = resources.getDrawable(R.drawable.icon_google, theme)
+
+        // Ensure the icon drawable is not null before setting it
+        iconDrawable?.let {
+            btnAccountGoogle.icon = it
+        }
+
         // Login Button Click Listener
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString()
@@ -56,8 +67,8 @@ class LoginFragment : Fragment() {
     }
 
     private fun loginUser(email: String, password: String) {
-    databaseReference.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(object :ValueEventListener{
-        override fun onDataChange(snapshot: DataSnapshot) {
+        databaseReference.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
                 if(snapshot.exists()){
                     for (userSnapshot in snapshot.children){
                         val userData =  userSnapshot.getValue(User::class.java)
@@ -69,19 +80,19 @@ class LoginFragment : Fragment() {
                         }
                     }
                 }
-        }
+            }
 
-        override fun onCancelled(error: DatabaseError) {
-            TODO("Not yet implemented")
-            Toast.makeText(requireContext(),"Login failed",Toast.LENGTH_SHORT).show()
-        }
-        private fun navigateToProfileFragment() {
-            val profileFragment = ProfileFragment() // Ganti dengan nama kelas fragment profil Anda
-            val transaction: FragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.frame_container, profileFragment) // Ganti dengan ID container fragment Anda
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
-    })
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+                Toast.makeText(requireContext(),"Login failed",Toast.LENGTH_SHORT).show()
+            }
+            private fun navigateToProfileFragment() {
+                val profileFragment = ProfileFragment() // Ganti dengan nama kelas fragment profil Anda
+                val transaction: FragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.frame_container, profileFragment) // Ganti dengan ID container fragment Anda
+                transaction.addToBackStack(null)
+                transaction.commit()
+            }
+        })
     }
 }

@@ -90,11 +90,29 @@
             android:textSize="9dp"/>
 
         <com.google.android.material.button.MaterialButton
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="ACCOUNT GOOGLE"
+            android:layout_below="@id/etPassword"
+            android:layout_marginTop="120dp"
+            app:backgroundTint="@color/white"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp"
+            app:icon="@drawable/icon_google"
+            app:iconTintMode="multiply"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/btnAccountGoogle"
+            android:textColor="@color/black"
+            android:fontFamily="@font/futura"
+            android:textStyle="bold" />
+
+        <com.google.android.material.button.MaterialButton
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="LOG IN"
-            android:layout_below="@id/etPassword"
-            android:layout_marginTop="130dp"
+            android:layout_below="@id/btnAccountGoogle"
+            android:layout_marginTop="20dp"
             app:backgroundTint="@color/black"
             app:strokeColor="@color/black"
             app:strokeWidth="1dp"

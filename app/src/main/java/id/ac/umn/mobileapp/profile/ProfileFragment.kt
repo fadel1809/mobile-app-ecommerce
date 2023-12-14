@@ -14,8 +14,6 @@ import id.ac.umn.mobileapp.profile.CreateAccountFragment
 
 class ProfileFragment : Fragment() {
 
-    // ... (kode yang lain)
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
