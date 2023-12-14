@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:text="ACCOUNT GOOGLE"
             android:layout_below="@id/etPassword"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="100dp"
             app:backgroundTint="@color/white"
             app:strokeColor="@color/black"
             app:strokeWidth="1dp"

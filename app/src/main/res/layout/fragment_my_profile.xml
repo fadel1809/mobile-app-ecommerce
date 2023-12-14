@@ -3,12 +3,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".profile.MyProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="My Profile" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome To Profile"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:fontFamily="@font/futura"
+            android:textStyle="bold"
+            android:id="@+id/tvWelcome"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/tvWelcome"
+            android:textSize="24dp"
+            android:id="@+id/tvNama"
+            android:text="dsadsdasdsadsadada"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/futura"
+            android:textColor="@color/black" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_below="@+id/tvNama"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/icon_profile"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:text="MY INFO"
+            app:cornerRadius="20dp"
+            app:backgroundTint="@color/white"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp"
+            android:layout_below="@id/profile_image"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/btnMyInfo"
+            android:fontFamily="@font/futura"
+            android:textStyle="bold" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:text="MY ORDERS"
+            app:cornerRadius="20dp"
+            app:backgroundTint="@color/white"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp"
+            android:layout_below="@id/btnMyInfo"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/btnMyOrders"
+            android:fontFamily="@font/futura"
+            android:textStyle="bold" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:text="MY WISHLISH"
+            app:cornerRadius="20dp"
+            app:backgroundTint="@color/black"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp"
+            android:layout_below="@id/btnMyOrders"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/btnCreateAccount"
+            android:fontFamily="@font/futura"
+            android:textStyle="bold" />
+    </RelativeLayout>
 
 </FrameLayout>

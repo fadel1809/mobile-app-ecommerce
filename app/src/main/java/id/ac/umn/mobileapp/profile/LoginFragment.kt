@@ -87,7 +87,7 @@ class LoginFragment : Fragment() {
                 Toast.makeText(requireContext(),"Login failed",Toast.LENGTH_SHORT).show()
             }
             private fun navigateToProfileFragment() {
-                val profileFragment = ProfileFragment() // Ganti dengan nama kelas fragment profil Anda
+                val profileFragment = MyProfileFragment() // Ganti dengan nama kelas fragment profil Anda
                 val transaction: FragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.frame_container, profileFragment) // Ganti dengan ID container fragment Anda
                 transaction.addToBackStack(null)
