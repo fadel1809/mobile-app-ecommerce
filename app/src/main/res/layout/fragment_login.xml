@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".profile.LoginFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="290dp"
+            android:layout_marginTop="150dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/background_card_login" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOG IN"
+            android:fontFamily="@font/futura"
+            android:textStyle="bold"
+            android:id="@+id/tvLogin"
+            android:layout_marginTop="215dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:textSize="18dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EMAIL"
+            android:fontFamily="@font/futura"
+            android:textStyle="bold"
+            android:layout_below="@id/tvLogin"
+            android:id="@+id/tvEmail"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:textSize="14dp"/>
+
+        <EditText
+            android:layout_width="330dp"
+            android:background="@drawable/edittext_login"
+            android:layout_height="35dp"
+            android:layout_below="@+id/tvEmail"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:id="@+id/etEmail"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PASSWORD"
+            android:fontFamily="@font/futura"
+            android:textStyle="bold"
+            android:layout_below="@id/etEmail"
+            android:id="@+id/tvPassword"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:textSize="14dp"/>
+
+        <EditText
+            android:layout_width="330dp"
+            android:background="@drawable/edittext_login"
+            android:layout_height="35dp"
+            android:layout_below="@+id/tvPassword"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:id="@+id/etPassword"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FORGOT PASSWORD"
+            android:fontFamily="@font/futura"
+            android:textStyle="bold"
+            android:layout_below="@id/etPassword"
+            android:id="@+id/tvForgotPassword"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="30dp"
+            android:textColor="@color/white"
+            android:textSize="9dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="LOG IN"
+            android:layout_below="@id/etPassword"
+            android:layout_marginTop="130dp"
+            app:backgroundTint="@color/black"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/btnLogin"
+            android:textColor="@color/white"
+            android:background="@drawable/button_login"
+            android:fontFamily="@font/futura"
+            android:textStyle="bold"
+            android:theme="@style/Theme.AppCompat"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".profile.ProfileFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to Profile"
+            android:fontFamily="@font/futura"
+            android:textStyle="bold"
+            android:id="@+id/tvWelcome"
+            android:layout_marginTop="100dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="150dp"
+            android:layout_below="@id/tvWelcome"
+            android:background="@drawable/background_card_profile" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="LOG IN"
+            android:layout_below="@id/tvWelcome"
+            android:layout_marginTop="200dp"
+            app:backgroundTint="@color/black"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/btnLogin"
+            android:textColor="@color/white"
+            android:background="@drawable/button_login"
+            android:fontFamily="@font/futura"
+            android:textStyle="bold"
+            android:theme="@style/Theme.AppCompat"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="CREATE ACCOUNT"
+            app:cornerRadius="20dp"
+            app:backgroundTint="@color/white"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp"
+            android:layout_below="@id/btnLogin"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/btnCreateAccount"
+            android:fontFamily="@font/futura"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+</FrameLayout>

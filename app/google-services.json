@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "888483369466",
+    "firebase_url": "https://goodnessandcool-app-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "goodnessandcool-app",
+    "storage_bucket": "goodnessandcool-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888483369466:android:74cc15a9283ddd88521443",
+        "android_client_info": {
+          "package_name": "id.ac.umn.mobileapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDT_3h5xRtdjKFIjUpbxNkRMRe1ovEc8uY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

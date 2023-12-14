@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".profile.CreateAccountFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CREATE ACCOUNT"
+            android:fontFamily="@font/futura"
+            android:textStyle="bold"
+            android:id="@+id/tvLogin"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/black"
+            android:textSize="18dp"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="570dp"
+            android:layout_marginTop="60dp"
+            android:id="@+id/iv"
+            android:background="@drawable/background_card_createaccount" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PERSONAL INFORMATION"
+            android:fontFamily="@font/futura"
+            android:textStyle="bold"
+            android:layout_below="@id/tvLogin"
+            android:id="@+id/tvPersonalInformation"
+            android:layout_marginTop="50dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:textSize="16dp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="480dp"
+            android:id="@+id/scroll"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/tvPersonalInformation">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:fontFamily="@font/futura"
+                    android:textStyle="bold"
+                    android:id="@+id/tvEmail"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="40dp"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:layout_width="330dp"
+                    android:background="@drawable/edittext_login"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/tvEmail"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/etEmail"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Title"
+                    android:fontFamily="@font/futura"
+                    android:textStyle="bold"
+                    android:layout_below="@id/etEmail"
+                    android:id="@+id/tvTitle"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="40dp"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:layout_width="330dp"
+                    android:background="@drawable/edittext_login"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/tvTitle"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/etTitle"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="First Name"
+                    android:fontFamily="@font/futura"
+                    android:textStyle="bold"
+                    android:layout_below="@id/etTitle"
+                    android:id="@+id/tvFirstName"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="40dp"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:layout_width="330dp"
+                    android:background="@drawable/edittext_login"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/tvFirstName"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/etFirstName"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Last Name"
+                    android:fontFamily="@font/futura"
+                    android:textStyle="bold"
+                    android:layout_below="@id/etFirstName"
+                    android:id="@+id/tvLastName"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="40dp"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:layout_width="330dp"
+                    android:background="@drawable/edittext_login"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/tvLastName"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/etLastName"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Password"
+                    android:fontFamily="@font/futura"
+                    android:textStyle="bold"
+                    android:layout_below="@id/etLastName"
+                    android:id="@+id/tvPassword"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="40dp"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:layout_width="330dp"
+                    android:background="@drawable/edittext_login"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/tvPassword"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/etPassword"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phone Number"
+                    android:fontFamily="@font/futura"
+                    android:textStyle="bold"
+                    android:layout_below="@id/etPassword"
+                    android:id="@+id/tvPhoneNumber"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="40dp"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:layout_width="330dp"
+                    android:background="@drawable/edittext_login"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/tvPhoneNumber"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/etPhoneNumber"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Address"
+                    android:fontFamily="@font/futura"
+                    android:textStyle="bold"
+                    android:layout_below="@id/etPhoneNumber"
+                    android:id="@+id/tvAddress"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="40dp"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:layout_width="330dp"
+                    android:background="@drawable/edittext_login"
+                    android:layout_height="100dp"
+                    android:layout_below="@+id/tvAddress"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/etAddress"
+                    android:layout_centerHorizontal="true"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cbPolicy"
+                    android:layout_marginLeft="30dp"
+                    android:layout_below="@id/etAddress" />
+
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:text="HEREBY I REGISTER, AGREE AND COMPLY WITH EVERYTHING GOODNESS AND COOL APP USER POLICY"
+                    android:id="@+id/tv"
+                    android:layout_below="@id/etAddress"
+                    android:textSize="10dp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/futura"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="70dp"/>
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRegister"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:layout_below="@id/iv"
+            android:layout_marginTop="10dp"
+            app:backgroundTint="@color/black"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:background="@drawable/button_login"
+            android:fontFamily="@font/futura"
+            android:textStyle="bold"
+            android:theme="@style/Theme.AppCompat"/>
+
+    </RelativeLayout>
+
+</FrameLayout>
