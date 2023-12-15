@@ -45,15 +45,6 @@ class LoginFragment : Fragment() {
         val passwordEditText: EditText = view.findViewById(R.id.etPassword)
         val loginButton: Button = view.findViewById(R.id.btnLogin)
 
-        val btnAccountGoogle: MaterialButton = view.findViewById(R.id.btnAccountGoogle)
-        val theme = null
-        val iconDrawable: Drawable? = resources.getDrawable(R.drawable.icon_google, theme)
-
-        // Ensure the icon drawable is not null before setting it
-        iconDrawable?.let {
-            btnAccountGoogle.icon = it
-        }
-
         // Login Button Click Listener
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString()

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".profile.MyInfoActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:theme="?actionBarTheme"
+        app:title="MY INFO"
+        app:titleMarginStart="110dp"
+        app:titleTextColor="@color/black"
+        app:navigationIcon="@drawable/icon_back" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:id="@+id/rlMyProfile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MY PROFILE"
+            android:fontFamily="@font/futura"
+            android:textStyle="bold"
+            android:id="@+id/tvMyProfile"/>
+
+        <View
+            android:layout_width="350dp"
+            android:layout_height="170dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/tvMyProfile"
+            android:background="@drawable/background_myinfo" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/icon_edit"
+            android:id="@+id/ibMyProfile"
+            android:layout_marginStart="330dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TITLE"
+            android:fontFamily="@font/futura"
+            android:layout_below="@+id/tvMyProfile"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FIRST NAME"
+            android:fontFamily="@font/futura"
+            android:layout_below="@+id/tvMyProfile"
+            android:layout_marginTop="70dp"
+            android:layout_marginStart="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LAST NAME"
+            android:fontFamily="@font/futura"
+            android:layout_below="@+id/tvMyProfile"
+            android:layout_marginTop="100dp"
+            android:layout_marginStart="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TELEPON"
+            android:fontFamily="@font/futura"
+            android:layout_below="@+id/tvMyProfile"
+            android:layout_marginTop="130dp"
+            android:layout_marginStart="20dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rlAddress"
+        android:layout_below="@id/rlMyProfile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ADDRESS"
+            android:fontFamily="@font/futura"
+            android:textStyle="bold"
+            android:id="@+id/tvAddress1"/>
+
+        <View
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/tvAddress1"
+            android:background="@drawable/background_myinfo" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/icon_edit"
+            android:id="@+id/ibEditAddress"
+            android:layout_marginStart="330dp" />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="....."
+            android:id="@+id/tvAddress"
+            android:fontFamily="@font/futura"
+            android:layout_below="@+id/tvAddress1"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlAddress"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOGIN INFORMATION"
+            android:fontFamily="@font/futura"
+            android:textStyle="bold"
+            android:id="@+id/tvLoginInformation"/>
+
+        <View
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/tvLoginInformation"
+            android:background="@drawable/background_myinfo" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/icon_edit"
+            android:id="@+id/ibLoginInformation"
+            android:layout_marginStart="330dp" />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="EMAIL"
+            android:id="@+id/tvEmail"
+            android:fontFamily="@font/futura"
+            android:layout_below="@+id/tvLoginInformation"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="20dp"/>
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="PASSWORD"
+            android:id="@+id/tvPassword"
+            android:fontFamily="@font/futura"
+            android:layout_below="@+id/tvEmail"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

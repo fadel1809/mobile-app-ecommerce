@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".profile.EditMyPorfileActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:theme="?actionBarTheme"
+        app:title="MY INFO"
+        app:titleMarginStart="110dp"
+        app:titleTextColor="@color/black"
+        app:navigationIcon="@drawable/icon_back" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit My Profile"
+        android:layout_below="@id/toolbar"
+        android:fontFamily="@font/futura"
+        android:textSize="20dp"
+        android:id="@+id/tvEditMyProfile"
+        android:textColor="@color/black"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tilTitle"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tvEditMyProfile">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tieTitle"
+            android:fontFamily="@font/futura"
+            android:inputType="textPersonName"
+            android:hint="Title">
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tilFirstName"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tilTitle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tieFirstName"
+            android:fontFamily="@font/futura"
+            android:inputType="textPersonName"
+            android:hint="First Name">
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tilLastName"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tilFirstName">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tieLastName"
+            android:fontFamily="@font/futura"
+            android:inputType="textPersonName"
+            android:hint="Last Name">
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="Save Modification"
+        android:layout_below="@id/tilLastName"
+        android:layout_marginTop="270dp"
+        app:backgroundTint="@color/black"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/btnLogin"
+        android:textColor="@color/white"
+        android:background="@drawable/button_login"
+        android:fontFamily="@font/futura"
+        android:textStyle="bold" />
+
+</RelativeLayout>

@@ -5,12 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.button.MaterialButton
 import id.ac.umn.mobileapp.R
-import id.ac.umn.mobileapp.profile.LoginFragment
-import id.ac.umn.mobileapp.profile.CreateAccountFragment
 
 class ProfileFragment : Fragment() {
 
