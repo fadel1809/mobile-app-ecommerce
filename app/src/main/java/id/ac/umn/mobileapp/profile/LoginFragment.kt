@@ -1,5 +1,6 @@
 package id.ac.umn.mobileapp.profile
 
+import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +19,8 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import id.ac.umn.mobileapp.R
+
+
 
 class LoginFragment : Fragment() {
     data class User(
@@ -58,12 +61,19 @@ class LoginFragment : Fragment() {
     }
 
     private fun loginUser(email: String, password: String) {
+
         databaseReference.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(object :ValueEventListener{
+
             override fun onDataChange(snapshot: DataSnapshot) {
                 if(snapshot.exists()){
+                    val sharedPrefs = context?.getSharedPreferences("user_data",Context.MODE_PRIVATE)
+                    val editor = sharedPrefs?.edit()
+                    editor?.putString("email",email)
+                    editor?.apply()
                     for (userSnapshot in snapshot.children){
                         val userData =  userSnapshot.getValue(User::class.java)
                         if(userData != null && userData.password == password){
+
                             Toast.makeText(requireContext(),"Login successful",Toast.LENGTH_SHORT).show()
                             navigateToProfileFragment()
                         }else{
@@ -78,12 +88,14 @@ class LoginFragment : Fragment() {
                 Toast.makeText(requireContext(),"Login failed",Toast.LENGTH_SHORT).show()
             }
             private fun navigateToProfileFragment() {
-                val profileFragment = MyProfileFragment() // Ganti dengan nama kelas fragment profil Anda
+                val myProfileFragment = MyProfileFragment() // Ganti dengan nama kelas fragment profil Anda
                 val transaction: FragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.frame_container, profileFragment) // Ganti dengan ID container fragment Anda
-                transaction.addToBackStack(null)
-                transaction.commit()
+                transaction?.replace(R.id.frame_container, myProfileFragment) // Ganti dengan ID container fragment Anda
+                transaction?.addToBackStack(null)
+                transaction?.commit()
             }
         })
     }
+
+
 }
