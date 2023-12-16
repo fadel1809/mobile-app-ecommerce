@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".profile.address.EditAddressActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:theme="?actionBarTheme"
+        app:title="ADDRESS"
+        app:titleMarginStart="110dp"
+        app:titleTextColor="@color/black"
+        app:navigationIcon="@drawable/icon_back" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Address"
+        android:layout_below="@id/toolbar"
+        android:fontFamily="@font/futura"
+        android:textSize="20dp"
+        android:id="@+id/tvEditMyProfile"
+        android:textColor="@color/black"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"/>
+
+    <EditText
+        android:layout_width="360dp"
+        android:layout_height="200dp"
+        android:fontFamily="@font/futura"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:id="@+id/etAddress"
+        android:background="@drawable/background_myinfo"
+        android:layout_below="@+id/tvEditMyProfile"
+        android:layout_centerHorizontal="true"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="Save Modification"
+        android:layout_below="@id/etAddress"
+        android:layout_marginTop="400dp"
+        app:backgroundTint="@color/black"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/btnLogin"
+        android:textColor="@color/white"
+        android:background="@drawable/button_login"
+        android:fontFamily="@font/futura"
+        android:textStyle="bold" />
+
+</RelativeLayout>

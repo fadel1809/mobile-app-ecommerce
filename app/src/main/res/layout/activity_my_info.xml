@@ -60,11 +60,51 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text=":"
+            android:textStyle="bold"
+            android:fontFamily="@font/futura"
+            android:layout_below="@+id/tvMyProfile"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="110dp"/>
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="TITLE"
+            android:id="@+id/tvTitle"
+            android:fontFamily="@font/futura"
+            android:layout_below="@+id/tvMyProfile"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="120dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="FIRST NAME"
             android:fontFamily="@font/futura"
             android:layout_below="@+id/tvMyProfile"
             android:layout_marginTop="70dp"
             android:layout_marginStart="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textStyle="bold"
+            android:fontFamily="@font/futura"
+            android:layout_below="@+id/tvMyProfile"
+            android:layout_marginTop="70dp"
+            android:layout_marginStart="110dp"/>
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="FIRST NAME"
+            android:id="@+id/tvFirstName"
+            android:fontFamily="@font/futura"
+            android:layout_below="@+id/tvMyProfile"
+            android:layout_marginTop="70dp"
+            android:layout_marginStart="120dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -76,6 +116,26 @@
             android:layout_marginStart="20dp"/>
 
         <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textStyle="bold"
+            android:fontFamily="@font/futura"
+            android:layout_below="@+id/tvMyProfile"
+            android:layout_marginTop="100dp"
+            android:layout_marginStart="110dp"/>
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="LAST NAME"
+            android:id="@+id/tvLastName"
+            android:fontFamily="@font/futura"
+            android:layout_below="@+id/tvMyProfile"
+            android:layout_marginTop="100dp"
+            android:layout_marginStart="120dp"/>
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TELEPON"
@@ -83,6 +143,26 @@
             android:layout_below="@+id/tvMyProfile"
             android:layout_marginTop="130dp"
             android:layout_marginStart="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textStyle="bold"
+            android:fontFamily="@font/futura"
+            android:layout_below="@+id/tvMyProfile"
+            android:layout_marginTop="130dp"
+            android:layout_marginStart="110dp"/>
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="TELEPON"
+            android:id="@+id/tvTelepon"
+            android:fontFamily="@font/futura"
+            android:layout_below="@+id/tvMyProfile"
+            android:layout_marginTop="130dp"
+            android:layout_marginStart="120dp"/>
 
     </RelativeLayout>
 
@@ -163,21 +243,60 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="EMAIL"
-            android:id="@+id/tvEmail"
+            android:id="@+id/tvEmail1"
             android:fontFamily="@font/futura"
             android:layout_below="@+id/tvLoginInformation"
             android:layout_marginTop="30dp"
             android:layout_marginStart="20dp"/>
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textStyle="bold"
+            android:fontFamily="@font/futura"
+            android:layout_below="@+id/tvLoginInformation"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="110dp"/>
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="EMAIL"
+            android:id="@+id/tvEmail"
+            android:fontFamily="@font/futura"
+            android:layout_below="@+id/tvLoginInformation"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="120dp"/>
+
+        <TextView
             android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="PASSWORD"
+            android:fontFamily="@font/futura"
+            android:layout_below="@+id/tvEmail1"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textStyle="bold"
+            android:fontFamily="@font/futura"
+            android:layout_below="@+id/tvEmail1"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="110dp"/>
+
+        <TextView
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="PASSWORD"
             android:id="@+id/tvPassword"
             android:fontFamily="@font/futura"
-            android:layout_below="@+id/tvEmail"
+            android:layout_below="@+id/tvEmail1"
             android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"/>
+            android:layout_marginStart="120dp"/>
 
     </RelativeLayout>
 

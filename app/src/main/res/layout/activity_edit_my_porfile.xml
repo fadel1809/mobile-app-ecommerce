@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".profile.EditMyPorfileActivity">
+    tools:context=".profile.myprofile.EditMyPorfileActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:text="Save Modification"
         android:layout_below="@id/tilLastName"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="400dp"
         app:backgroundTint="@color/black"
         app:strokeColor="@color/black"
         app:strokeWidth="1dp"
