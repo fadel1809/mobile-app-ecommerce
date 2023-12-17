@@ -10,4 +10,5 @@
     <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">@color/grey</item>
     </style>
+
 </resources>

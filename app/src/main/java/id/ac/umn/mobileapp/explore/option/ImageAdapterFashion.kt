@@ -7,17 +7,24 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import id.ac.umn.mobileapp.R
-import id.ac.umn.mobileapp.home.ImageAdapter
 
 class ImageAdapterFashion(private val imageResourceIds: List<Int>) :
     RecyclerView.Adapter<ImageAdapterFashion.ViewHolder>() {
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    var itemClickListener: ItemClickListener? = null
+
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.imageView)
+
+        init {
+            itemView.setOnClickListener {
+                itemClickListener?.onItemClick(adapterPosition)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_fashion, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_food, parent, false)
         return ViewHolder(view)
     }
 

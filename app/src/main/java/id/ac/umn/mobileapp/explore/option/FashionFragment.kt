@@ -1,5 +1,6 @@
 package id.ac.umn.mobileapp.explore.option
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import id.ac.umn.mobileapp.R
-
-class FashionFragment : Fragment() {
+import id.ac.umn.mobileapp.explore.fashion.FashionExploreActivity
+class FashionFragment : Fragment(), ItemClickListener {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,10 +27,16 @@ class FashionFragment : Fragment() {
             )
 
         val imageAdapter = ImageAdapterFashion(imageResourceIds)
+        imageAdapter.itemClickListener = this
         recyclerView.adapter = imageAdapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
         return view
+    }
+
+    override fun onItemClick(position: Int) {
+        val intent = Intent(requireContext(), FashionExploreActivity::class.java)
+        startActivity(intent)
     }
 }
 
