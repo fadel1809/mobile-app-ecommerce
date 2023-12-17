@@ -43,6 +43,7 @@
             android:id="@+id/tieTitle"
             android:fontFamily="@font/futura"
             android:inputType="textPersonName"
+            android:text=""
             android:hint="Title">
         </com.google.android.material.textfield.TextInputEditText>
 
@@ -62,6 +63,7 @@
             android:id="@+id/tieFirstName"
             android:fontFamily="@font/futura"
             android:inputType="textPersonName"
+            android:text=""
             android:hint="First Name">
         </com.google.android.material.textfield.TextInputEditText>
 
@@ -79,6 +81,7 @@
             android:layout_width="370dp"
             android:layout_height="wrap_content"
             android:id="@+id/tieLastName"
+            android:text=""
             android:fontFamily="@font/futura"
             android:inputType="textPersonName"
             android:hint="Last Name">
@@ -96,7 +99,7 @@
         app:strokeColor="@color/black"
         app:strokeWidth="1dp"
         android:layout_centerHorizontal="true"
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnSaveModification"
         android:textColor="@color/white"
         android:background="@drawable/button_login"
         android:fontFamily="@font/futura"

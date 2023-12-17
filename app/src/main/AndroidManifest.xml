@@ -28,8 +28,9 @@
             android:name=".profile.logininformation.EditPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".profile.myprofile.EditMyPorfileActivity"
+            android:name=".profile.myprofile.EditMyProfileActivity"
             android:exported="false" />
+
         <activity
             android:name=".profile.MyInfoActivity"
             android:exported="false" />

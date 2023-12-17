@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.google.firebase.database.*
 
 import id.ac.umn.mobileapp.R
@@ -31,8 +32,9 @@ class MyProfileFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         val sharedPreferences = context?.getSharedPreferences("user_data", Context.MODE_PRIVATE)
         val email = sharedPreferences?.getString("email", "User")
-        if (email != null) {
-            setupFirebaseListener(email)
+        val id = sharedPreferences?.getString("id","")
+        if (email != null && id  != null) {
+            setupFirebaseListener(email,id)
         }
     }
 
@@ -43,22 +45,55 @@ class MyProfileFragment : Fragment() {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("users")
         val view = inflater.inflate(R.layout.fragment_my_profile, container, false)
+        val sharedPreferences = context?.getSharedPreferences("user_data", Context.MODE_PRIVATE)
+        val email = sharedPreferences?.getString("email", "User")
+        val id = sharedPreferences?.getString("id","")
 
+        if (email != null && id !=null) {
+            setupFirebaseListener(email, id)
+        } else {
+            val sharedPreferences= context?.getSharedPreferences("user_data", Context.MODE_PRIVATE)
+            val editor = sharedPreferences?.edit()
+            editor?.remove("email")
+            editor?.remove("id")
+            editor?.apply()
+            val myProfileFragment = LoginFragment()// Ganti dengan nama kelas fragment profil Anda
+            val transaction: FragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction?.replace(R.id.frame_container, myProfileFragment) // Ganti dengan ID container fragment Anda
+            transaction?.addToBackStack(null)
+            transaction?.commit()
+        }
         val btnMyInfo: Button = view.findViewById(R.id.btnMyInfo)
+        val btnLogout: Button = view.findViewById(R.id.btnLogout)
         // val btnMyOrders: Button = view.findViewById(R.id.btnMyOrders)
         // val btnCreateAccount: Button = view.findViewById(R.id.btnCreateAccount)
         // val tvName: TextView = view.findViewById(R.id.tvNama)
 
         btnMyInfo.setOnClickListener {
-//             Pindah ke halaman MyInfoActivity
-             val intent = Intent(activity, MyInfoActivity::class.java)
-             startActivity(intent)
+//          Pindah ke halaman MyInfoActivity
+            val intent = Intent(activity, MyInfoActivity::class.java)
+            intent.putExtra("email",email)
+            intent.putExtra("id",id)
+            startActivity(intent)
+        }
+
+        btnLogout.setOnClickListener {
+            val sharedPreferences= context?.getSharedPreferences("user_data", Context.MODE_PRIVATE)
+            val editor = sharedPreferences?.edit()
+            editor?.remove("email")
+            editor?.remove("id")
+            editor?.apply()
+            val myProfileFragment = LoginFragment()// Ganti dengan nama kelas fragment profil Anda
+            val transaction: FragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction?.replace(R.id.frame_container, myProfileFragment) // Ganti dengan ID container fragment Anda
+            transaction?.addToBackStack(null)
+            transaction?.commit()
         }
 
         return view
     }
 
-    private fun setupFirebaseListener(userEmail: String) {
+    private fun setupFirebaseListener(userEmail: String,id:String) {
         // Query to find the user with the matching email
         val query = databaseReference.orderByChild("email").equalTo(userEmail)
 

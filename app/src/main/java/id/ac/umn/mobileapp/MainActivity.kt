@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
             val fragment = when (menuItem.itemId) {
+
                 R.id.bottom_home -> HomeFragment()
                 R.id.bottom_Explore -> ExploreFragment()
                 R.id.bottom_bag -> BagFragment()

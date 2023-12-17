@@ -57,6 +57,7 @@ class LoginFragment : Fragment() {
             loginUser(email, password)
         }
 
+
         return view
     }
 
@@ -66,14 +67,15 @@ class LoginFragment : Fragment() {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 if(snapshot.exists()){
-                    val sharedPrefs = context?.getSharedPreferences("user_data",Context.MODE_PRIVATE)
-                    val editor = sharedPrefs?.edit()
-                    editor?.putString("email",email)
-                    editor?.apply()
+
                     for (userSnapshot in snapshot.children){
                         val userData =  userSnapshot.getValue(User::class.java)
                         if(userData != null && userData.password == password){
-
+                            val sharedPrefs = context?.getSharedPreferences("user_data",Context.MODE_PRIVATE)
+                            val editor = sharedPrefs?.edit()
+                            editor?.putString("email",userData.email)
+                            editor?.putString("id",userSnapshot.key.toString())
+                            editor?.apply()
                             Toast.makeText(requireContext(),"Login successful",Toast.LENGTH_SHORT).show()
                             navigateToProfileFragment()
                         }else{
@@ -88,7 +90,7 @@ class LoginFragment : Fragment() {
                 Toast.makeText(requireContext(),"Login failed",Toast.LENGTH_SHORT).show()
             }
             private fun navigateToProfileFragment() {
-                val myProfileFragment = MyProfileFragment() // Ganti dengan nama kelas fragment profil Anda
+                val myProfileFragment = MyProfileFragment() // Ganti dengan nama kelas fragment profil And
                 val transaction: FragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
                 transaction?.replace(R.id.frame_container, myProfileFragment) // Ganti dengan ID container fragment Anda
                 transaction?.addToBackStack(null)

@@ -1,6 +1,8 @@
 package id.ac.umn.mobileapp.profile
 
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,6 +20,16 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val sharedPreferences = context?.getSharedPreferences("user_data", Context.MODE_PRIVATE)
+        val email = sharedPreferences?.getString("email", "User")
+        val id = sharedPreferences?.getString("id","")
+        if( email != null && id != null){
+            val myProfileFragment = MyProfileFragment() // Ganti dengan nama kelas fragment profil Anda
+            val transaction: FragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction?.replace(R.id.frame_container, myProfileFragment) // Ganti dengan ID container fragment Anda
+            transaction?.addToBackStack(null)
+            transaction?.commit()
+        }
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
         val btnLogin = view.findViewById<MaterialButton>(R.id.btnLogin)
