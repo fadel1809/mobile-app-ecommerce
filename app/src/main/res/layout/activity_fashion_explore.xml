@@ -13,7 +13,7 @@
         android:background="@color/white"
         android:theme="?actionBarTheme"
         app:title="FASHION"
-        app:titleMarginStart="120dp"
+        app:titleMarginStart="110dp"
         app:titleTextColor="@color/black"
         app:navigationIcon="@drawable/icon_back" />
 

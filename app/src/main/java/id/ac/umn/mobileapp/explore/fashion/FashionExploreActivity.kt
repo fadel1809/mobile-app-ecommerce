@@ -32,11 +32,13 @@ class FashionExploreActivity : AppCompatActivity() {
 
         // Contoh data
         val dataList = listOf(
-            YourDataModel(R.drawable.food_explore_1, "Burger", "Rp.100.000"),
-            YourDataModel(R.drawable.food_explore_2, "Chicken", "Rp.400.000"),
-            YourDataModel(R.drawable.food_explore_3, "Warehouse", "Rp.200.000"),
-            YourDataModel(R.drawable.food_explore_4, "Warehouse", "Rp.100.000"),
-            YourDataModel(R.drawable.food_explore_5, "Warehouse", "Rp.50.000")
+            YourDataModel(R.drawable.fashion_explore_jacket, "Jacket", "Rp.100.000"),
+            YourDataModel(R.drawable.fashion_explore_pants, "Pants", "Rp.400.000"),
+            YourDataModel(R.drawable.fashion_explore_sandals, "Sandals", "Rp.200.000"),
+            YourDataModel(R.drawable.fashion_explore_shirt, "Shirt", "Rp.100.000"),
+            YourDataModel(R.drawable.fashion_explore_shortpants, "Shortpants", "Rp.50.000"),
+            YourDataModel(R.drawable.fashion_explore_shoes, "Shoes", "Rp.50.000"),
+            YourDataModel(R.drawable.fashion_explore_sweater, "Sweater", "Rp.50.000")
         )
 
         val adapter = FashionExploreAdapter(dataList)

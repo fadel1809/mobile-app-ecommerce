@@ -70,7 +70,7 @@
         <TextView
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="TITLE"
+            android:text=""
             android:id="@+id/tvTitle"
             android:fontFamily="@font/futura"
             android:layout_below="@+id/tvMyProfile"
@@ -99,7 +99,7 @@
         <TextView
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="FIRST NAME"
+            android:text=""
             android:id="@+id/tvFirstName"
             android:fontFamily="@font/futura"
             android:layout_below="@+id/tvMyProfile"
@@ -128,7 +128,7 @@
         <TextView
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="LAST NAME"
+            android:text=""
             android:id="@+id/tvLastName"
             android:fontFamily="@font/futura"
             android:layout_below="@+id/tvMyProfile"
@@ -157,7 +157,7 @@
         <TextView
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="TELEPON"
+            android:text=""
             android:id="@+id/tvTelepon"
             android:fontFamily="@font/futura"
             android:layout_below="@+id/tvMyProfile"
@@ -200,7 +200,7 @@
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="....."
+            android:text=""
             android:id="@+id/tvAddress"
             android:fontFamily="@font/futura"
             android:layout_below="@+id/tvAddress1"
@@ -262,7 +262,7 @@
         <TextView
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="EMAIL"
+            android:text=""
             android:id="@+id/tvEmail"
             android:fontFamily="@font/futura"
             android:layout_below="@+id/tvLoginInformation"
@@ -291,7 +291,7 @@
         <TextView
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="PASSWORD"
+            android:text=""
             android:id="@+id/tvPassword"
             android:fontFamily="@font/futura"
             android:layout_below="@+id/tvEmail1"
