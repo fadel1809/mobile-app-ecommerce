@@ -1,5 +1,6 @@
 package id.ac.umn.mobileapp.profile
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -34,6 +35,7 @@ class LoginFragment : Fragment() {
     )
     private lateinit var databaseReference: DatabaseReference
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,9 +54,15 @@ class LoginFragment : Fragment() {
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString()
             val password = passwordEditText.text.toString()
+            val isEmailEmpty = emailEditText.text.toString().trim().isEmpty()
+            val isPasswordEmpty = passwordEditText.text.toString().trim().isEmpty()
+                if(!isEmailEmpty && !isPasswordEmpty){
+                    // Panggil fungsi login
+                    loginUser(email, password)
+                }else{
+                    Toast.makeText(requireContext(),"email dan password kosong",Toast.LENGTH_SHORT).show()
+                }
 
-            // Panggil fungsi login
-            loginUser(email, password)
         }
 
 
@@ -63,41 +71,45 @@ class LoginFragment : Fragment() {
 
     private fun loginUser(email: String, password: String) {
 
-        databaseReference.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(object :ValueEventListener{
+        databaseReference.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
-                if(snapshot.exists()){
-
-                    for (userSnapshot in snapshot.children){
-                        val userData =  userSnapshot.getValue(User::class.java)
-                        if(userData != null && userData.password == password){
-                            val sharedPrefs = context?.getSharedPreferences("user_data",Context.MODE_PRIVATE)
+                if (snapshot.exists()) {
+                    for (userSnapshot in snapshot.children) {
+                        val userData = userSnapshot.getValue(User::class.java)
+                        if (userData != null && userData.password == password) {
+                            val sharedPrefs = context?.getSharedPreferences("user_data", Context.MODE_PRIVATE)
                             val editor = sharedPrefs?.edit()
-                            editor?.putString("email",userData.email)
-                            editor?.putString("id",userSnapshot.key.toString())
+                            editor?.putString("email", userData.email)
+                            editor?.putString("id", userSnapshot.key.toString())
                             editor?.apply()
-                            Toast.makeText(requireContext(),"Login successful",Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "Login successful", Toast.LENGTH_SHORT).show()
                             navigateToProfileFragment()
-                        }else{
-                            Toast.makeText(requireContext(),"Password Salah",Toast.LENGTH_SHORT).show()
+                            return // Exit the function after successful login
+                        } else {
+                            Toast.makeText(requireContext(), "Password Salah", Toast.LENGTH_SHORT).show()
+                            return // Exit the function if password is incorrect
                         }
                     }
+                } else {
+                    Toast.makeText(requireContext(), "Email tidak ditemukan!", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-                Toast.makeText(requireContext(),"Login failed",Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Login failed", Toast.LENGTH_SHORT).show()
             }
+
             private fun navigateToProfileFragment() {
-                val myProfileFragment = MyProfileFragment() // Ganti dengan nama kelas fragment profil And
+                val myProfileFragment = MyProfileFragment()
                 val transaction: FragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-                transaction?.replace(R.id.frame_container, myProfileFragment) // Ganti dengan ID container fragment Anda
-                transaction?.addToBackStack(null)
-                transaction?.commit()
+                transaction.replace(R.id.frame_container, myProfileFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
             }
         })
     }
+
 
 
 }

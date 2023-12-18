@@ -3,6 +3,7 @@ package id.ac.umn.mobileapp.profile
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -96,7 +97,7 @@ class MyProfileFragment : Fragment() {
     private fun setupFirebaseListener(userEmail: String,id:String) {
         // Query to find the user with the matching email
         val query = databaseReference.orderByChild("email").equalTo(userEmail)
-
+        var btnLogout = view?.findViewById<Button?>(R.id.btnLogout)
         // Listen for changes in the database
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -115,10 +116,11 @@ class MyProfileFragment : Fragment() {
                         // Update the TextViews with the retrieved data
                         tvName?.text = "$firstName $lastName"
                     }
+                    btnLogout?.text = "LOGOUT"
                 } else {
                     // Handle the case where no user with the specified email was found
                     // You can show an error message or take appropriate action
-                    Toast.makeText(requireContext(), "something wrong", Toast.LENGTH_SHORT).show()
+                    btnLogout?.text = "LOGIN"
                 }
             }
 
