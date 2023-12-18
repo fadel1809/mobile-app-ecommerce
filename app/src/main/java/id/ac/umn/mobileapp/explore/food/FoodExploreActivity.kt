@@ -1,5 +1,7 @@
+// FoodExploreActivity.kt
 package id.ac.umn.mobileapp.explore.food
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -31,14 +33,15 @@ class FoodExploreActivity : AppCompatActivity() {
 
         // Contoh data
         val dataList = listOf(
-            YourDataModel(R.drawable.food_explore_1, "Burger", "Rp.100.000"),
-            YourDataModel(R.drawable.food_explore_2, "Chicken", "Rp.400.000"),
-            YourDataModel(R.drawable.food_explore_3, "Warehouse", "Rp.200.000"),
-            YourDataModel(R.drawable.food_explore_4, "Warehouse", "Rp.100.000"),
-            YourDataModel(R.drawable.food_explore_5, "Warehouse", "Rp.50.000")
+            YourDataModel(R.drawable.food_explore_1, "Burger", "Rp.100.000", "Deskripsi Burger"),
+            YourDataModel(R.drawable.food_explore_2, "Chicken", "Rp.400.000", "Deskripsi Chicken"),
+            YourDataModel(R.drawable.food_explore_3, "Warehouse", "Rp.200.000", "Deskripsi Warehouse"),
+            YourDataModel(R.drawable.food_explore_4, "Warehouse With Chicken", "Rp.100.000", "Deskripsi Warehouse With Chicken"),
+            YourDataModel(R.drawable.food_explore_5, "Warehouse2", "Rp.50.000", "Deskripsi Warehouse2")
         )
 
-        val adapter = FoodExploreAdapter(dataList)
+        // Pass data list to the adapter
+        val adapter = FoodExploreAdapter(this, dataList)
         recyclerView.adapter = adapter
     }
 }
