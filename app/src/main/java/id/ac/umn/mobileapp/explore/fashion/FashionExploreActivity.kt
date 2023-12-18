@@ -41,7 +41,9 @@ class FashionExploreActivity : AppCompatActivity() {
             YourDataModel(R.drawable.fashion_explore_sweater, "Sweater", "Rp.50.000")
         )
 
-        val adapter = FashionExploreAdapter(dataList)
+
+        val adapter = FashionExploreAdapter(dataList,this)
         recyclerView.adapter = adapter
     }
 }
+
