@@ -20,40 +20,15 @@
         <item>3</item>
         <item>4</item>
     </string-array>
-    <string name="lorem_ipsum">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
-        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
-        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
-        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
-        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
-        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
-        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
-        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
-        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
-        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
-        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
-        bibendum, vel congue leo egestas.\n\n
-        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
-        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
-        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
-        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
-        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
-        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
-        est.\n\n
-        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
-        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
-        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
-        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
-        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
-        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
-        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
-        convallis.\n\n
-        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
-        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
-        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
-        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
-        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
-        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
-        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+    <string name="advice_life">
+In the contemporary landscape of progress, the intersection of medical science, education, and information technology forms a symbiotic relationship that propels society towards a healthier and more informed future. The fusion of these three domains has given rise to transformative advancements that not only enhance healthcare delivery but also revolutionize the way knowledge is disseminated and absorbed. \n\n
+
+Medical technology, marked by breakthroughs such as telemedicine and precision medicine, has ushered in an era where healthcare transcends geographical barriers. Telemedicine enables patients to access medical expertise remotely, reducing the constraints of distance and improving healthcare accessibility. Precision medicine, on the other hand, tailors treatments to individual genetic profiles, ensuring more effective and personalized care.\n\n
+
+Education, in tandem with technology, has undergone a paradigm shift. The integration of information technology in education has democratized learning, making quality education accessible to a global audience. Virtual classrooms, interactive simulations, and online resources have transformed the traditional education landscape, fostering a dynamic and inclusive learning environment. In the medical field, virtual simulations allow students to practice surgical procedures in a risk-free digital space, enhancing their skills and confidence before entering real-world scenarios.\n\n
+
+Information technology serves as the backbone of this symbiosis, acting as the catalyst for innovation in both medical science and education. Big data analytics and artificial intelligence (AI) analyze vast datasets to derive valuable insights for medical research, diagnosis, and treatment. In education, AI-powered adaptive learning systems cater to individual learning styles, providing personalized learning experiences that optimize knowledge retention and skill acquisition. \n\n
+
+As this triumvirate of medical, education, and information technology continues to evolve, the possibilities for a healthier and more informed society are boundless. The collaborative efforts of professionals in these fields are driving advancements that not only cure diseases but also empower individuals through knowledge. In this era of interconnectedness, the synergy of medical, education, and information technology is not merely a convergence of disciplines; it is a blueprint for a future where health and knowledge thrive in harmony, creating a world that is both physically and intellectually resilient.
     </string>
 </resources>
