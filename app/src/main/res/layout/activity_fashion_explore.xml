@@ -12,8 +12,8 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/white"
         android:theme="?actionBarTheme"
-        app:title="FASHION"
-        app:titleMarginStart="110dp"
+        app:title="FASHION CATALOG"
+        app:titleMarginStart="60dp"
         app:titleTextColor="@color/black"
         app:navigationIcon="@drawable/icon_back" />
 

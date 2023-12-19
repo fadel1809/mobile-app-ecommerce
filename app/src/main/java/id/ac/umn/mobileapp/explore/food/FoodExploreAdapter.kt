@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import id.ac.umn.mobileapp.R
+import java.text.NumberFormat
+import java.util.Locale
 
 class FoodExploreAdapter(
     private val context: Context,
@@ -38,7 +40,10 @@ class FoodExploreAdapter(
         // Set data to views
         holder.cardView.setImageResource(data.imageResource)
         holder.tvNameFood.text = data.tvNameFood
-        holder.tvHarga.text = data.tvHarga
+
+        // Format harga with currency symbol and thousands separator
+        val formattedHarga = formatCurrency(data.tvHarga)
+        holder.tvHarga.text = formattedHarga
 
         // Handle item click event
         holder.itemView.setOnClickListener {
@@ -50,12 +55,19 @@ class FoodExploreAdapter(
                 putExtra("imageResource", data.imageResource)
                 putExtra("nameFood", data.tvNameFood)
                 putExtra("harga", data.tvHarga)
-                putExtra("keterangan", data.keterangan)
+                putExtra("keterangan", data.tvKeterangan)
             }
             context.startActivity(intent)
         }
     }
 
+    // Function to format currency
+    private fun formatCurrency(amount: Int): String {
+        val format = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
+        return format.format(amount.toLong())
+    }
+
+    // Function to save data to Firebase
     private fun saveDataToFirebase(data: YourDataModel) {
         // Generate a unique key for each entry
         val key = database.push().key
