@@ -22,6 +22,8 @@ class FashionBagAdapter(var dataBagFashion: List<FashionBag>) :
         val cardView: ImageView = itemView.findViewById(R.id.imageView)
         val tvNameFashion: TextView = itemView.findViewById(R.id.tvNameFashion)
         val tvHarga: TextView = itemView.findViewById(R.id.tvHarga)
+        val tvSize:TextView = itemView.findViewById(R.id.tvSize)
+        val tvQuantity: TextView = itemView.findViewById(R.id.tvQuantity)
     }
 
     private val database: DatabaseReference = FirebaseDatabase.getInstance().reference.child("bag")
@@ -48,6 +50,8 @@ class FashionBagAdapter(var dataBagFashion: List<FashionBag>) :
         // Format harga with currency symbol and thousands separator
         val formattedHarga = formatCurrency(data.tvHarga)
         holder.tvHarga.text = formattedHarga
+        holder.tvSize.setText(data.selectedSize)
+        holder.tvQuantity.text = data.tvQuantity
     }
 
     private fun formatCurrency(amount: Long): String {
@@ -58,3 +62,4 @@ class FashionBagAdapter(var dataBagFashion: List<FashionBag>) :
         return format.format(amount)
     }
 }
+
