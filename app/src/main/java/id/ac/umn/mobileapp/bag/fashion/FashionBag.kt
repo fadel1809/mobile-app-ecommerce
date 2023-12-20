@@ -1,4 +1,8 @@
 package id.ac.umn.mobileapp.bag.fashion
 
-interface FashionBag {
-}
+data class FashionBag(
+    val imageResourceName: String,
+    val tvNameFashion: String,
+    val tvHarga: Long,
+    val tvKeterangan: String
+)

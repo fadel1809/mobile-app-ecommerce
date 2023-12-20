@@ -2,22 +2,23 @@ package id.ac.umn.mobileapp.explore.fashion
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.Exclude
 import com.google.firebase.database.FirebaseDatabase
 import id.ac.umn.mobileapp.R
 import id.ac.umn.mobileapp.bag.BagFragment
 import id.ac.umn.mobileapp.bag.fashion.FashionBagFragment
 import id.ac.umn.mobileapp.profile.LoginFragment
-import id.ac.umn.mobileapp.profile.MyProfileFragment
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -25,7 +26,7 @@ class FashionExploreCatalogActivity : AppCompatActivity() {
     data class Bag(
         val user:String, val productName: String,
         val harga: Long,
-        val selectedSize: String, val quantity:String, val image:String
+        val selectedSize: String, val quantity:String, val image:String, val category: String
     )
 
     private lateinit var databaseReference: DatabaseReference
@@ -114,7 +115,7 @@ class FashionExploreCatalogActivity : AppCompatActivity() {
                 val selectedQuantity = tieQuantity.text.toString()
 
                 val bag = nameFashion?.let {
-                    Bag(id, it, harga, selectedSize, selectedQuantity, imageResourceName.toString())
+                    Bag(id, it, harga, selectedSize, selectedQuantity, imageResourceName.toString(),"fashion")
                 }
 
                 if (bag != null) {
@@ -142,13 +143,7 @@ class FashionExploreCatalogActivity : AppCompatActivity() {
         return format.format(amount)
 
     }
-    private fun navigateToBagFragment(){
-        val myProfileFragment = FashionBagFragment()
-        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.frame_container, myProfileFragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
-    }
+
     private fun navigateToLoginFragment(){
         val myProfileFragment = LoginFragment()
         val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
@@ -157,4 +152,24 @@ class FashionExploreCatalogActivity : AppCompatActivity() {
         transaction.commit()
     }
 
+    private fun navigateToBagFragment() {
+        // Check if the frame_container contains BagFragment
+        val bagFragment = supportFragmentManager.findFragmentById(R.id.frame_container)
+
+        if (bagFragment is BagFragment) {
+            // BagFragment is present, replace its content with BagFragment
+            val newBagFragment = BagFragment()
+            val transaction: FragmentTransaction = bagFragment.childFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainer, newBagFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        } else {
+            // Log the error details
+            Log.e("FashionExploreCatalogActivity", "Error navigating to BagFragment. BagFragment not found.")
+            Toast.makeText(this@FashionExploreCatalogActivity, "Error navigating to BagFragment", Toast.LENGTH_SHORT).show()
+        }
+    }
+
 }
+
+

@@ -1,6 +1,5 @@
 package id.ac.umn.mobileapp.explore.fashion
 
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +14,7 @@ import com.google.firebase.database.FirebaseDatabase
 import java.text.NumberFormat
 import java.util.Locale
 
-class FashionExploreAdapter(private val dataList: List<Fashion>) :
+class FashionExploreAdapter(private val dataList: MutableList<Fashion>) :
     RecyclerView.Adapter<FashionExploreAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -68,18 +67,6 @@ class FashionExploreAdapter(private val dataList: List<Fashion>) :
         (format as java.text.DecimalFormat).decimalFormatSymbols = symbols
         return format.format(amount)
 
-    }
-
-    // Function to save data to Firebase
-    private fun saveDataToFirebase(data: Fashion) {
-        // Generate a unique key for each entry
-        val key = database.push().key
-
-        // Check if the key is not null
-        key?.let {
-            // Save data to Firebase under "fashion" reference with the generated key
-            database.child(it).setValue(data)
-        }
     }
 
     override fun getItemCount(): Int {
