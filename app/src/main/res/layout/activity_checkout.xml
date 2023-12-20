@@ -16,14 +16,13 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="500dp"
-            android:padding="10dp" />
+            android:layout_margin="10dp"/>
 
     </ScrollView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_padding="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="520dp"

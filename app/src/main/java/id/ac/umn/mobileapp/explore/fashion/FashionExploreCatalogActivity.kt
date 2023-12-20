@@ -1,18 +1,36 @@
 package id.ac.umn.mobileapp.explore.fashion
 
+import android.content.Context
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.Exclude
+import com.google.firebase.database.FirebaseDatabase
 import id.ac.umn.mobileapp.R
+import id.ac.umn.mobileapp.bag.BagFragment
+import id.ac.umn.mobileapp.bag.fashion.FashionBagFragment
+import id.ac.umn.mobileapp.profile.LoginFragment
+import id.ac.umn.mobileapp.profile.MyProfileFragment
 import java.text.NumberFormat
 import java.util.Locale
 
 class FashionExploreCatalogActivity : AppCompatActivity() {
+    data class Bag(
+        val user:String, val productName: String,
+        val harga: Long,
+        val selectedSize: String, val quantity:String, val image:String
+    )
+
+    private lateinit var databaseReference: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
+        val database = FirebaseDatabase.getInstance()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fashion_explore_catalog)
 
@@ -35,12 +53,17 @@ class FashionExploreCatalogActivity : AppCompatActivity() {
         val tvNameFashion: TextView = findViewById(R.id.tvNameFoodCheckout)
         val tvHarga: TextView = findViewById(R.id.tvHargaCheckout)
         val tvKeterangan: TextView = findViewById(R.id.tvKeteranganCheckout)
-
+        val btnWishlist : MaterialButton = findViewById(R.id.btnWishlist)
+        val btnBag : MaterialButton = findViewById(R.id.btnAddtobag)
+        val btnChheckOut: MaterialButton = findViewById(R.id.btnCheckout)
         // Retrieve data from the intent
         val imageResourceName = intent.getStringExtra("imageResource")
         val nameFashion = intent.getStringExtra("nameFashion")
         val harga = intent.getLongExtra("harga", 0)
         val keterangan = intent.getStringExtra("keterangan")
+        val sharedPreferences = getPreferences(Context.MODE_PRIVATE)
+        val id = sharedPreferences.getString("id","")
+
 
         // Convert harga to a formatted string
         val formattedHarga = formatCurrency(harga)
@@ -81,11 +104,57 @@ class FashionExploreCatalogActivity : AppCompatActivity() {
             val selectedQuantity: String = quantityArray[position]
             // Handle the selected size as needed
         }
+
+        btnBag.setOnClickListener{
+            if(id != null){
+                val bagTbl = database.getReference("bag")
+                val bagAdd = bagTbl.push()
+
+                val selectedSize = tieSize.text.toString()
+                val selectedQuantity = tieQuantity.text.toString()
+
+                val bag = nameFashion?.let {
+                    Bag(id, it, harga, selectedSize, selectedQuantity, imageResourceName.toString())
+                }
+
+                if (bag != null) {
+                    bagAdd.setValue(bag).addOnSuccessListener{
+                        navigateToBagFragment()
+                    }.addOnFailureListener{
+                        navigateToLoginFragment()
+                    }
+                } else {
+                    // Handle the case where bag is null
+                    navigateToLoginFragment()
+                }
+            } else {
+                navigateToLoginFragment()
+            }
+        }
     }
 
     // Function to format currency
     private fun formatCurrency(amount: Long): String {
         val format = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
+        val symbols = (format as java.text.DecimalFormat).decimalFormatSymbols
+        symbols.currencySymbol = "Rp. "
+        (format as java.text.DecimalFormat).decimalFormatSymbols = symbols
         return format.format(amount)
+
     }
+    private fun navigateToBagFragment(){
+        val myProfileFragment = FashionBagFragment()
+        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.frame_container, myProfileFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+    private fun navigateToLoginFragment(){
+        val myProfileFragment = LoginFragment()
+        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.frame_container, myProfileFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
 }

@@ -1,5 +1,7 @@
 package id.ac.umn.mobileapp.explore
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,11 +21,13 @@ class ExploreFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_explore, container, false)
-
+        val sharedPreferences = context?.getSharedPreferences("user_data",Context.MODE_PRIVATE)
+        val id  = sharedPreferences?.getString("id","")
         showFragment(FashionFragment())
 
         view.findViewById<MaterialButton>(R.id.btnFashion).setOnClickListener {
             showFragment(FashionFragment())
+
         }
 
         view.findViewById<MaterialButton>(R.id.btnFood).setOnClickListener {

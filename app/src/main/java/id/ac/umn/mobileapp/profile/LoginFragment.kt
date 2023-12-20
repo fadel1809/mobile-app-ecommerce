@@ -2,6 +2,7 @@ package id.ac.umn.mobileapp.profile
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log

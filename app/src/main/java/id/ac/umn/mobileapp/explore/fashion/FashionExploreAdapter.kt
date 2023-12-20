@@ -63,7 +63,11 @@ class FashionExploreAdapter(private val dataList: List<Fashion>) :
     // Function to format currency
     private fun formatCurrency(amount: Long): String {
         val format = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
+        val symbols = (format as java.text.DecimalFormat).decimalFormatSymbols
+        symbols.currencySymbol = "Rp. "
+        (format as java.text.DecimalFormat).decimalFormatSymbols = symbols
         return format.format(amount)
+
     }
 
     // Function to save data to Firebase
