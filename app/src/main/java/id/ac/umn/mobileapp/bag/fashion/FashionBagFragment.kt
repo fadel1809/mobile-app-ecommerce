@@ -43,7 +43,7 @@ class FashionBagFragment : Fragment() {
     }
 
     private fun fetchUserData() {
-        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
+        databaseReference.orderByChild("category").equalTo("fashion").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val fashionList = mutableListOf<FashionBag>()
                 for (userSnapshot in snapshot.children) {
