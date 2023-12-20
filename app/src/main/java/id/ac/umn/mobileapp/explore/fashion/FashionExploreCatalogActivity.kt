@@ -32,22 +32,25 @@ class FashionExploreCatalogActivity : AppCompatActivity() {
         }
 
         val imageView: ImageView = findViewById(R.id.imageViewCheckout)
-        val tvNameFood: TextView = findViewById(R.id.tvNameFoodCheckout)
+        val tvNameFashion: TextView = findViewById(R.id.tvNameFoodCheckout)
         val tvHarga: TextView = findViewById(R.id.tvHargaCheckout)
         val tvKeterangan: TextView = findViewById(R.id.tvKeteranganCheckout)
 
         // Retrieve data from the intent
-        val imageResource = intent.getIntExtra("imageResource", 0)
-        val nameFood = intent.getStringExtra("nameFood")
-        val harga = intent.getIntExtra("harga", 0)
+        val imageResourceName = intent.getStringExtra("imageResource")
+        val nameFashion = intent.getStringExtra("nameFashion")
+        val harga = intent.getLongExtra("harga", 0)
         val keterangan = intent.getStringExtra("keterangan")
 
         // Convert harga to a formatted string
         val formattedHarga = formatCurrency(harga)
 
+        // Get the resource ID for the image
+        val resourceId = resources.getIdentifier(imageResourceName, "drawable", packageName)
+
         // Set data to views
-        imageView.setImageResource(imageResource)
-        tvNameFood.text = nameFood
+        imageView.setImageResource(resourceId)
+        tvNameFashion.text = nameFashion
         tvHarga.text = formattedHarga
         tvKeterangan.text = keterangan
 
@@ -62,7 +65,7 @@ class FashionExploreCatalogActivity : AppCompatActivity() {
 
         // Specify the layout to use when the list of choices appears
         arrayAdapterSize.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        arrayAdapterSize.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        arrayAdapterQuantity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         // Apply the adapter to the AutoCompleteTextView
         tieSize.setAdapter(arrayAdapterSize)
@@ -81,8 +84,8 @@ class FashionExploreCatalogActivity : AppCompatActivity() {
     }
 
     // Function to format currency
-    private fun formatCurrency(amount: Int): String {
+    private fun formatCurrency(amount: Long): String {
         val format = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
-        return format.format(amount.toLong())
+        return format.format(amount)
     }
 }

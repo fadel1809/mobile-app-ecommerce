@@ -38,16 +38,17 @@ class FoodExploreAddtobagActivity : AppCompatActivity() {
         val tvKeterangan: TextView = findViewById(R.id.tvKeteranganCheckout)
 
         // Retrieve data from the intent
-        val imageResource = intent.getIntExtra("imageResource", 0)
+        val imageResource = intent.getStringExtra("imageResource")
         val nameFood = intent.getStringExtra("nameFood")
-        val harga = intent.getIntExtra("harga", 0) // Provide a default value if the key is not found
+        val harga = intent.getLongExtra("harga", 0) // Provide a default value if the key is not found
         val keterangan = intent.getStringExtra("keterangan")
 
         // Convert harga to a formatted string
         val formattedHarga = formatCurrency(harga)
+        val resourceId = resources.getIdentifier(imageResource, "drawable", packageName)
 
         // Set data to views
-        imageView.setImageResource(imageResource)
+        imageView.setImageResource(resourceId)
         tvNameFood.text = nameFood
         tvHarga.text = formattedHarga
         tvKeterangan.text = keterangan
@@ -73,8 +74,8 @@ class FoodExploreAddtobagActivity : AppCompatActivity() {
     }
 
     // Function to format currency
-    private fun formatCurrency(amount: Int): String {
+    private fun formatCurrency(amount: Long): String {
         val format = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
-        return format.format(amount.toLong())
+        return format.format(amount)
     }
 }

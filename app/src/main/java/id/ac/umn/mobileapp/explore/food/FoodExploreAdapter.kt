@@ -1,4 +1,3 @@
-// FoodExploreAdapter.kt
 package id.ac.umn.mobileapp.explore.food
 
 import android.content.Context
@@ -9,15 +8,16 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.bumptech.glide.Glide
 import id.ac.umn.mobileapp.R
 import java.text.NumberFormat
 import java.util.Locale
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class FoodExploreAdapter(
-    private val context: Context,
-    private val dataList: List<YourDataModel>
+
+    private val dataList: List<Food>
 ) : RecyclerView.Adapter<FoodExploreAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -34,52 +34,44 @@ class FoodExploreAdapter(
         return ViewHolder(view)
     }
 
+    override fun getItemCount(): Int {
+        return dataList.size
+    }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val data = dataList[position]
+        if (position != RecyclerView.NO_POSITION) {
+            val data = dataList[position]
+            val context = holder.itemView.context
 
-        // Set data to views
-        holder.cardView.setImageResource(data.imageResource)
-        holder.tvNameFood.text = data.tvNameFood
+            // Set data to views
+            val resourceId =
+                context.resources.getIdentifier(data.imageResourceName, "drawable", context.packageName)
+            Glide.with(context).load(resourceId).into(holder.cardView)
+            holder.tvNameFood.text = data.tvNameFood
 
-        // Format harga with currency symbol and thousands separator
-        val formattedHarga = formatCurrency(data.tvHarga)
-        holder.tvHarga.text = formattedHarga
+            // Format harga with currency symbol and thousands separator
+            val formattedHarga = formatCurrency(data.tvHarga)
+            holder.tvHarga.text = formattedHarga
 
-        // Handle item click event
-        holder.itemView.setOnClickListener {
-            // Save data to Firebase
-            saveDataToFirebase(data)
+            // Handle item click event
+            holder.itemView.setOnClickListener {
+                // Save data to Firebase
 
-            // Launch FoodExploreCheckoutActivity with selected item details
-            val intent = Intent(context, FoodExploreAddtobagActivity::class.java).apply {
-                putExtra("imageResource", data.imageResource)
-                putExtra("nameFood", data.tvNameFood)
-                putExtra("harga", data.tvHarga)
-                putExtra("keterangan", data.tvKeterangan)
+                // Launch FoodExploreCheckoutActivity with selected item details
+                val intent = Intent(context,FoodExploreAddtobagActivity::class.java).apply {
+                    putExtra("imageResource", data.imageResourceName)
+                    putExtra("nameFood", data.tvNameFood)
+                    putExtra("harga", data.tvHarga)
+                    putExtra("keterangan", data.tvKeterangan)
+                }
+                context.startActivity(intent)
             }
-            context.startActivity(intent)
         }
     }
 
     // Function to format currency
-    private fun formatCurrency(amount: Int): String {
+    private fun formatCurrency(amount: Long): String {
         val format = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
-        return format.format(amount.toLong())
-    }
-
-    // Function to save data to Firebase
-    private fun saveDataToFirebase(data: YourDataModel) {
-        // Generate a unique key for each entry
-        val key = database.push().key
-
-        // Check if the key is not null
-        key?.let {
-            // Save data to Firebase under "food" reference with the generated key
-            database.child(it).setValue(data)
-        }
-    }
-
-    override fun getItemCount(): Int {
-        return dataList.size
+        return format.format(amount)
     }
 }
