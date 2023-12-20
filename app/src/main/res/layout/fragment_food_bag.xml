@@ -3,18 +3,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".bag.food.FoodBagFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".bag.fashion.FashionBagFragment">
+
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="500dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="500dp"
             android:padding="5dp" />
 
     </ScrollView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_padding="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="520dp"
+        app:cardCornerRadius="20dp"
+        android:elevation="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/futura"
+            android:text="TOTAL PRICE"
+            android:textSize="16dp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="230dp"
+            android:fontFamily="@font/futura"
+            android:text=""
+            android:textSize="16dp"
+            android:id="@+id/tvTotal"
+            android:textColor="@color/black" />
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:text="CHECKOUT"
+        android:layout_marginTop="650dp"
+        app:backgroundTint="@color/black"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/btnCheckout"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/black"
+        android:fontFamily="@font/futura"
+        android:textStyle="bold"
+        android:theme="@style/Theme.AppCompat"/>
 
 </FrameLayout>

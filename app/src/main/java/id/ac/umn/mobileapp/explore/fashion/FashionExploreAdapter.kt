@@ -49,7 +49,6 @@ class FashionExploreAdapter(private val dataList: List<Fashion>) :
         holder.itemView.setOnClickListener {
             // Save data to Firebase
 
-
             // Launch FoodExploreCheckoutActivity with selected item details
             val intent = Intent(context, FashionExploreCatalogActivity::class.java)
             intent.putExtra("imageResource", data.imageResourceName)
