@@ -9,12 +9,12 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="350dp">
+        android:layout_height="400dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="400dp"
             android:layout_margin="10dp" />
 
     </ScrollView>
@@ -24,7 +24,7 @@
         android:layout_height="100dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="420dp"
         app:cardCornerRadius="20dp"
         android:elevation="20dp">
 
@@ -51,19 +51,19 @@
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCheckout"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:text="CHECKOUT"
-        android:layout_marginTop="450dp"
-        app:backgroundTint="@color/black"
-        app:strokeColor="@color/black"
-        app:strokeWidth="1dp"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/btnCheckout"
-        android:textColor="@color/white"
+        android:layout_marginTop="550dp"
         android:backgroundTint="@color/black"
         android:fontFamily="@font/futura"
+        android:text="CHECKOUT"
+        android:textColor="@color/white"
         android:textStyle="bold"
-        android:theme="@style/Theme.AppCompat"/>
+        android:theme="@style/Theme.AppCompat"
+        app:backgroundTint="@color/black"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp" />
 
 </FrameLayout>

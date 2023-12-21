@@ -44,16 +44,37 @@ class FashionBagFragment : Fragment() {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("bag")
 
-        // Fetch data and update adapter
         fetchUserData()
-        val btnCO:MaterialButton? = view?.findViewById(R.id.btnCheckout)
-        btnCO?.setOnClickListener{
 
-            val intent = Intent(requireContext(),CheckoutActivity::class.java)
+        val btnCO: MaterialButton? = view?.findViewById(R.id.btnCheckout)
+        btnCO?.setOnClickListener {
+            val intent = Intent(requireContext(), CheckoutActivity::class.java)
+
+            // Pass tvTotal to CheckoutActivity
+            val tvTotal: TextView? = view?.findViewById(R.id.tvTotal)
+            val totalAmount = tvTotal?.text?.toString() ?: "0"
+            intent.putExtra("TOTAL_AMOUNT", totalAmount)
+
+            // Pass data from the snapshot to CheckoutActivity
+            val fashionList = adapter.dataBagFashion // Assuming fashionList is the list containing snapshot data
+            val dataBundle = Bundle()
+
+            for (fashion in fashionList) {
+                val itemBundle = Bundle()
+                itemBundle.putString("image", fashion.imageResourceName)
+                itemBundle.putString("productName", fashion.tvNameFashion)
+                itemBundle.putLong("harga", fashion.tvHarga)
+                itemBundle.putString("selectedSize", fashion.selectedSize)
+                itemBundle.putString("quantity", fashion.tvQuantity)
+
+                // Use a unique key for each item, e.g., "ITEM_1", "ITEM_2", etc.
+                dataBundle.putBundle("ITEM_${fashionList.indexOf(fashion) + 1}", itemBundle)
+            }
+
+            intent.putExtra("DATA_BUNDLE", dataBundle)
             startActivity(intent)
-
-
         }
+
 
         return view
     }

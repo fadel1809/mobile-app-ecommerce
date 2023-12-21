@@ -63,6 +63,19 @@
             android:textAlignment="center"
             android:textSize="16sp" />
 
+        <TextView
+            android:id="@+id/tvQuantity"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvNameFashion"
+            android:layout_marginStart="250dp"
+            android:layout_marginTop="110dp"
+            android:elevation="20dp"
+            android:fontFamily="@font/futura"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="16sp" />
+
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
