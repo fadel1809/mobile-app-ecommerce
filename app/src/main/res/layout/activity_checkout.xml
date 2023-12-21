@@ -10,22 +10,69 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="500dp">
+        android:layout_height="400dp"
+        android:id="@+id/scrollView">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="400dp"
             android:layout_margin="10dp"/>
 
     </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="385dp"
+        android:layout_height="wrap_content"
+        android:text="PAYMENT METHOD"
+        android:layout_below="@id/scrollView"
+        android:layout_marginTop="60dp"
+        app:backgroundTint="@color/black"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/btnPayment"
+        android:textAlignment="viewStart"
+        app:icon="@drawable/icon_forward"
+        app:iconTintMode="multiply"
+        app:iconGravity="end"
+        app:iconTint="@color/white"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/black"
+        android:fontFamily="@font/futura"
+        android:textStyle="bold"
+        android:theme="@style/Theme.AppCompat"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="385dp"
+        android:layout_height="wrap_content"
+        android:text="COURIER"
+        android:layout_below="@id/btnPayment"
+        android:layout_marginTop="10dp"
+        app:backgroundTint="@color/white"
+        app:strokeColor="@color/black"
+        android:textAlignment="viewStart"
+        app:strokeWidth="1dp"
+        app:icon="@drawable/icon_forward"
+        app:iconTintMode="multiply"
+        app:iconGravity="end"
+        app:iconTint="@color/black"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/btnCourier"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/futura"
+        android:textStyle="bold"
+        android:theme="@style/Theme.AppCompat"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="520dp"
+        android:id="@+id/cardview"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/btnCourier"
         app:cardCornerRadius="20dp"
         android:elevation="20dp">
 
@@ -55,10 +102,11 @@
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:text="CHECKOUT"
-        android:layout_marginTop="650dp"
+        android:layout_marginTop="50dp"
         app:backgroundTint="@color/black"
         app:strokeColor="@color/black"
         app:strokeWidth="1dp"
+        android:layout_below="@id/cardview"
         android:layout_centerHorizontal="true"
         android:id="@+id/btnCheckout"
         android:textColor="@color/white"
