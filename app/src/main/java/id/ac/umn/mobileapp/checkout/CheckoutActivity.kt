@@ -17,6 +17,7 @@ import java.text.NumberFormat
 import java.util.Locale
 
 class CheckoutActivity : AppCompatActivity() {
+
     data class CheckOutModel(
         val category: String = "",
         val harga: Long = 0,
@@ -47,6 +48,7 @@ class CheckoutActivity : AppCompatActivity() {
             val db = FirebaseDatabase.getInstance().getReference("checkout")
 
             // Clear the "checkout" node before pushing new data
+
 
             databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {

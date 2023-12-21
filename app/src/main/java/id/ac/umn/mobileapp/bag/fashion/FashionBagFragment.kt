@@ -1,3 +1,4 @@
+// FashionBagFragment.kt
 package id.ac.umn.mobileapp.bag.fashion
 
 import android.content.Context
@@ -49,7 +50,7 @@ class FashionBagFragment : Fragment() {
         val id = sharedPreferences?.getString("id", null)
         if (id == null) {
 
-            Toast.makeText(requireContext(), "Login Terlebih dahulu", Toast.LENGTH_SHORT).show()
+             Toast.makeText(requireContext(), "Login Terlebih dahulu", Toast.LENGTH_SHORT).show()
 //            val intent = Intent(requireContext(),MyProfileFragment::class.java)
 //            startActivity(intent)
         }else{
@@ -59,41 +60,41 @@ class FashionBagFragment : Fragment() {
 
 
 
-        val btnCO: MaterialButton? = view?.findViewById(R.id.btnCheckout)
-        btnCO?.setOnClickListener {
-            val intent = Intent(requireContext(), CheckoutActivity::class.java)
+            val btnCO: MaterialButton? = view?.findViewById(R.id.btnCheckout)
+            btnCO?.setOnClickListener {
+                val intent = Intent(requireContext(), CheckoutActivity::class.java)
 
-            // Pass tvTotal to CheckoutActivity
-            val tvTotal: TextView? = view?.findViewById(R.id.tvTotal)
-            val totalAmount = tvTotal?.text?.toString() ?: "0"
-            intent.putExtra("TOTAL_AMOUNT", totalAmount)
+                // Pass tvTotal to CheckoutActivity
+                val tvTotal: TextView? = view?.findViewById(R.id.tvTotal)
+                val totalAmount = tvTotal?.text?.toString() ?: "0"
+                intent.putExtra("TOTAL_AMOUNT", totalAmount)
 
-            // Pass data from the snapshot to CheckoutActivity
-            val fashionList =
-                adapter.dataBagFashion // Assuming fashionList is the list containing snapshot data
-            val dataBundle = Bundle()
+                // Pass data from the snapshot to CheckoutActivity
+                val fashionList =
+                    adapter.dataBagFashion // Assuming fashionList is the list containing snapshot data
+                val dataBundle = Bundle()
 
-            for (fashion in fashionList) {
-                val itemBundle = Bundle()
-                itemBundle.putString("image", fashion.imageResourceName)
-                itemBundle.putString("productName", fashion.tvNameFashion)
-                itemBundle.putLong("harga", fashion.tvHarga)
-                itemBundle.putString("selectedSize", fashion.selectedSize)
-                itemBundle.putString("quantity", fashion.tvQuantity)
+                for (fashion in fashionList) {
+                    val itemBundle = Bundle()
+                    itemBundle.putString("image", fashion.imageResourceName)
+                    itemBundle.putString("productName", fashion.tvNameFashion)
+                    itemBundle.putLong("harga", fashion.tvHarga)
+                    itemBundle.putString("selectedSize", fashion.selectedSize)
+                    itemBundle.putString("quantity", fashion.tvQuantity)
 
-                // Use a unique key for each item, e.g., "ITEM_1", "ITEM_2", etc.
-                dataBundle.putBundle("ITEM_${fashionList.indexOf(fashion) + 1}", itemBundle)
+                    // Use a unique key for each item, e.g., "ITEM_1", "ITEM_2", etc.
+                    dataBundle.putBundle("ITEM_${fashionList.indexOf(fashion) + 1}", itemBundle)
+                }
+
+                intent.putExtra("DATA_BUNDLE", dataBundle)
+                startActivity(intent)
             }
 
-            intent.putExtra("DATA_BUNDLE", dataBundle)
-            startActivity(intent)
-        }
+
+            return view
 
 
-        return view
-
-
-    }
+}
 
     private fun fetchUserData() {
         databaseReference.orderByChild("category").equalTo("fashion").addListenerForSingleValueEvent(object : ValueEventListener {
