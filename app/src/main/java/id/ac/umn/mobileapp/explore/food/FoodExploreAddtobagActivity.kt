@@ -65,7 +65,7 @@ class FoodExploreAddtobagActivity : AppCompatActivity() {
         val harga = intent.getLongExtra("harga", 0)
         val keterangan = intent.getStringExtra("keterangan")
         val sharedPreferences = getPreferences(Context.MODE_PRIVATE)
-        val id = sharedPreferences.getString("id","")
+        val id = sharedPreferences.getString("id",null)
 
         // Convert harga to a formatted string
         val formattedHarga = formatCurrency(harga)
@@ -109,16 +109,17 @@ class FoodExploreAddtobagActivity : AppCompatActivity() {
 
                 if (bag != null) {
                     bagAdd.setValue(bag).addOnSuccessListener{
-                        navigateToBagFragment()
+                        Toast.makeText(this@FoodExploreAddtobagActivity, "Added to Bag", Toast.LENGTH_SHORT).show()
                     }.addOnFailureListener{
-                        navigateToLoginFragment()
+                        Toast.makeText(this@FoodExploreAddtobagActivity, "Added Failed", Toast.LENGTH_SHORT).show()
                     }
                 } else {
                     // Handle the case where bag is null
-                    navigateToLoginFragment()
+                    Toast.makeText(this@FoodExploreAddtobagActivity, "Error Try Again", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                navigateToLoginFragment()
+                Toast.makeText(this@FoodExploreAddtobagActivity, "Silahkan Login Terlebih Dahulu", Toast.LENGTH_SHORT).show()
+
             }
         }
     }
