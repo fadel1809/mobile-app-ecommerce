@@ -52,6 +52,7 @@ class FashionBagFragment : Fragment() {
             val intent = Intent(requireContext(),CheckoutActivity::class.java)
             startActivity(intent)
 
+
         }
 
         return view

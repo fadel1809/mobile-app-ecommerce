@@ -1,6 +1,5 @@
 package id.ac.umn.mobileapp.explore.food
 
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -26,7 +25,7 @@ class FoodExploreAdapter(
         val tvHarga: TextView = itemView.findViewById(R.id.tvHarga)
     }
 
-    private val database: DatabaseReference = FirebaseDatabase.getInstance().reference.child("food")
+    private val database: DatabaseReference = FirebaseDatabase.getInstance().reference.child("foods")
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -34,44 +33,44 @@ class FoodExploreAdapter(
         return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int {
-        return dataList.size
-    }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (position != RecyclerView.NO_POSITION) {
-            val data = dataList[position]
-            val context = holder.itemView.context
+        val data = dataList[position]
+        val context = holder.itemView.context
 
-            // Set data to views
-            val resourceId =
-                context.resources.getIdentifier(data.imageResourceName, "drawable", context.packageName)
-            Glide.with(context).load(resourceId).into(holder.cardView)
-            holder.tvNameFood.text = data.tvNameFood
+        // Set data to views
+        val resourceId = context.resources.getIdentifier(data.imageResourceName, "drawable", context.packageName)
+        Glide.with(context).load(resourceId).into(holder.cardView)
+        holder.tvNameFood.text = data.tvNameFood
 
-            // Format harga with currency symbol and thousands separator
-            val formattedHarga = formatCurrency(data.tvHarga)
-            holder.tvHarga.text = formattedHarga
+        // Format harga with currency symbol and thousands separator
+        val formattedHarga = formatCurrency(data.tvHarga)
+        holder.tvHarga.text = formattedHarga
 
-            // Handle item click event
-            holder.itemView.setOnClickListener {
-                // Save data to Firebase
+        // Handle item click event
+        holder.itemView.setOnClickListener {
+            // Save data to Firebase
 
-                // Launch FoodExploreCheckoutActivity with selected item details
-                val intent = Intent(context,FoodExploreAddtobagActivity::class.java).apply {
-                    putExtra("imageResource", data.imageResourceName)
-                    putExtra("nameFood", data.tvNameFood)
-                    putExtra("harga", data.tvHarga)
-                    putExtra("keterangan", data.tvKeterangan)
-                }
-                context.startActivity(intent)
-            }
+            // Launch FoodExploreCheckoutActivity with selected item details
+            val intent = Intent(context, FoodExploreAddtobagActivity::class.java)
+            intent.putExtra("imageResource", data.imageResourceName)
+            intent.putExtra("nameFood", data.tvNameFood)
+            intent.putExtra("harga", data.tvHarga)
+            intent.putExtra("keterangan", data.tvKeterangan)
+
+            context.startActivity(intent)
         }
     }
 
     // Function to format currency
     private fun formatCurrency(amount: Long): String {
         val format = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
+        val symbols = (format as java.text.DecimalFormat).decimalFormatSymbols
+        symbols.currencySymbol = "Rp. "
+        (format as java.text.DecimalFormat).decimalFormatSymbols = symbols
         return format.format(amount)
+    }
+
+    override fun getItemCount(): Int {
+        return dataList.size
     }
 }
