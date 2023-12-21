@@ -67,7 +67,6 @@ class FashionExploreCatalogActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("user_data",Context.MODE_PRIVATE)
         val id = sharedPreferences.getString("id",null)
 
-
         // Convert harga to a formatted string
         val formattedHarga = formatCurrency(harga)
 

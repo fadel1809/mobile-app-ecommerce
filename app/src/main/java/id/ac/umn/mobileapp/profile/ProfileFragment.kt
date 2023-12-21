@@ -21,8 +21,8 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val sharedPreferences = context?.getSharedPreferences("user_data", Context.MODE_PRIVATE)
-        val email = sharedPreferences?.getString("email", "User")
-        val id = sharedPreferences?.getString("id","")
+        val email = sharedPreferences?.getString("email", null)
+        val id = sharedPreferences?.getString("id" ,null)
         if( email != null && id != null){
             val myProfileFragment = MyProfileFragment() // Ganti dengan nama kelas fragment profil Anda
             val transaction: FragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()

@@ -65,7 +65,7 @@ class FoodExploreAddtobagActivity : AppCompatActivity() {
         val nameFood = intent.getStringExtra("nameFood")
         val harga = intent.getLongExtra("harga", 0)
         val keterangan = intent.getStringExtra("keterangan")
-        val sharedPreferences = getPreferences(Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("user_data", Context.MODE_PRIVATE)
         val id = sharedPreferences.getString("id",null)
 
         // Convert harga to a formatted string
