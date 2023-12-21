@@ -3,6 +3,7 @@ package id.ac.umn.mobileapp.order
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
@@ -24,7 +25,17 @@ class OrderActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order)
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
+        // Tambahkan ikon navigasi
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        // Tambahkan onClickListener untuk ikon navigasi
+        toolbar.setNavigationOnClickListener {
+            // Kembali ke fragment sebelumnya atau lakukan operasi yang sesuai
+            onBackPressed()
+        }
         recyclerView = findViewById(R.id.recyclerView)
         val layoutManager = GridLayoutManager(this, 1)
         recyclerView.layoutManager = layoutManager
@@ -33,7 +44,8 @@ class OrderActivity : AppCompatActivity() {
         adapter = OrderAdapter(emptyList())
         recyclerView.adapter = adapter
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("bag")
+        databaseReference = FirebaseDatabase.getInstance().getReference("checkout")
+        fetchUserData()
     }
 
     private fun fetchUserData() {

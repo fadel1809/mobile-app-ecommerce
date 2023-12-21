@@ -1,5 +1,6 @@
 package id.ac.umn.mobileapp.checkout
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
@@ -13,6 +14,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import id.ac.umn.mobileapp.R
+import id.ac.umn.mobileapp.order.OrderActivity
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -76,6 +78,7 @@ class CheckoutActivity : AppCompatActivity() {
                                         "Berhasil Checkout",
                                         Toast.LENGTH_SHORT
                                     ).show()
+                                    startActivity(Intent(this@CheckoutActivity,OrderActivity::class.java))
                                 }.addOnFailureListener {
                                     Toast.makeText(
                                         this@CheckoutActivity,
