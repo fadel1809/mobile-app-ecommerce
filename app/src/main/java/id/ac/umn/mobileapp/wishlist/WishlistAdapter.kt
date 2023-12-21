@@ -52,7 +52,6 @@ class WishlistAdapter(var dataWishlist: List<Wishlist>) :
         val formattedHarga = formatCurrency(data.tvHarga)
         holder.tvHarga.text = formattedHarga
         holder.tvSize.text = data.selectedSize
-        holder.tvQuantity.text = data.quantity
     }
 
     private fun formatCurrency(amount: Long): String {

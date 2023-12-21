@@ -20,6 +20,7 @@ import id.ac.umn.mobileapp.bag.BagFragment
 import id.ac.umn.mobileapp.bag.fashion.FashionBagFragment
 import id.ac.umn.mobileapp.explore.ExploreFragment
 import id.ac.umn.mobileapp.profile.LoginFragment
+import id.ac.umn.mobileapp.wishlist.Wishlist
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -106,7 +107,20 @@ class FashionExploreCatalogActivity : AppCompatActivity() {
             val selectedQuantity: String = quantityArray[position]
             // Handle the selected size as needed
         }
+        btnWishlist.setOnClickListener{
+            val db = database.getReference("wishlist")
+            val wislisAdd = db.push()
+            val wislis = Wishlist(imageResourceName.toString(),nameFashion.toString(),harga, " ","")
+            if (wislis!=null){
+                wislisAdd.setValue(wislis).addOnSuccessListener{
+                    Toast.makeText(this@FashionExploreCatalogActivity, "Added to Wishlist", Toast.LENGTH_SHORT).show()
 
+                }.addOnFailureListener{
+                    Toast.makeText(this@FashionExploreCatalogActivity, "Adding Failed", Toast.LENGTH_SHORT).show()
+
+                }
+            }
+        }
         btnBag.setOnClickListener{
             if(id != null){
                 val bagTbl = database.getReference("bag")
