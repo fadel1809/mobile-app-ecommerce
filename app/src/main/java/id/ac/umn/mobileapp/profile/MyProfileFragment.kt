@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.google.firebase.database.*
 
 import id.ac.umn.mobileapp.R
+import id.ac.umn.mobileapp.order.OrderActivity
 
 class MyProfileFragment : Fragment() {
     data class User(
@@ -66,9 +67,17 @@ class MyProfileFragment : Fragment() {
         }
         val btnMyInfo: Button = view.findViewById(R.id.btnMyInfo)
         val btnLogout: Button = view.findViewById(R.id.btnLogout)
-        // val btnMyOrders: Button = view.findViewById(R.id.btnMyOrders)
-        // val btnCreateAccount: Button = view.findViewById(R.id.btnCreateAccount)
-        // val tvName: TextView = view.findViewById(R.id.tvNama)
+        val btnMyOrders: Button = view.findViewById(R.id.btnMyOrders)
+        val btnWishlist: Button = view.findViewById(R.id.btnWishlist)
+        val tvName: TextView = view.findViewById(R.id.tvNama)
+
+        btnMyOrders.setOnClickListener {
+//          Pindah ke halaman MyInfoActivity
+            val intent = Intent(activity, OrderActivity::class.java)
+            intent.putExtra("email",email)
+            intent.putExtra("id",id)
+            startActivity(intent)
+        }
 
         btnMyInfo.setOnClickListener {
 //          Pindah ke halaman MyInfoActivity

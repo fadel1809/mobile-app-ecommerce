@@ -91,7 +91,7 @@
             android:layout_marginTop="10dp"
             android:textColor="@color/white"
             android:layout_centerHorizontal="true"
-            android:id="@+id/btnWhislish"
+            android:id="@+id/btnWishlist"
             android:fontFamily="@font/futura"
             android:textStyle="bold" />
 
@@ -104,7 +104,7 @@
             app:strokeColor="@color/black"
             app:strokeWidth="1dp"
             app:icon="@drawable/icon_logout"
-            android:layout_below="@id/btnWhislish"
+            android:layout_below="@id/btnWishlist"
             android:layout_marginTop="180dp"
             android:textColor="@color/white"
             android:layout_centerHorizontal="true"

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.textview.MaterialTextView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -17,6 +18,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import id.ac.umn.mobileapp.R
 import id.ac.umn.mobileapp.checkout.CheckoutActivity
+import java.text.NumberFormat
+import java.util.Locale
 
 class FoodBagFragment : Fragment() {
     private lateinit var databaseReference: DatabaseReference
@@ -77,12 +80,22 @@ class FoodBagFragment : Fragment() {
         databaseReference.orderByChild("category").equalTo("foods").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val foodList = mutableListOf<FoodBag>()
+                val tvTotal:TextView? = view?.findViewById(R.id.tvTotal)
+                var total : Long = 0
                 for (userSnapshot in snapshot.children) {
                     val image = userSnapshot.child("image").getValue(String::class.java) ?: ""
                     val name = userSnapshot.child("productName").getValue(String::class.java) ?: ""
                     val harga = userSnapshot.child("harga").getValue(Long::class.java) ?: 0
                     val quantity = userSnapshot.child("quantity").getValue(String::class.java) ?: ""
-
+                    val qtyInt = try {
+                        quantity.toInt()
+                    } catch (e: NumberFormatException) {
+                        // Handle the case where "quantity" is not a valid integer
+                        0 // or any default value you want to assign
+                    }
+                    val hargaPerItem :Long = harga * qtyInt
+                    total += hargaPerItem
+                    tvTotal?.text = formatCurrency(total)
                     val food = FoodBag(image, name, harga, quantity)
                     foodList.add(food)
                 }
@@ -96,5 +109,12 @@ class FoodBagFragment : Fragment() {
                 // Handle errors
             }
         })
+    }
+    private fun formatCurrency(amount: Long): String {
+        val format = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
+        val symbols = (format as java.text.DecimalFormat).decimalFormatSymbols
+        symbols.currencySymbol = "Rp. "
+        (format as java.text.DecimalFormat).decimalFormatSymbols = symbols
+        return format.format(amount)
     }
 }

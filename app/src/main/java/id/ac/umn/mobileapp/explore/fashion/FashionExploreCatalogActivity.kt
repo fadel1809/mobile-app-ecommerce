@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase
 import id.ac.umn.mobileapp.R
 import id.ac.umn.mobileapp.bag.BagFragment
 import id.ac.umn.mobileapp.bag.fashion.FashionBagFragment
+import id.ac.umn.mobileapp.explore.ExploreFragment
 import id.ac.umn.mobileapp.profile.LoginFragment
 import java.text.NumberFormat
 import java.util.Locale
@@ -62,8 +63,8 @@ class FashionExploreCatalogActivity : AppCompatActivity() {
         val nameFashion = intent.getStringExtra("nameFashion")
         val harga = intent.getLongExtra("harga", 0)
         val keterangan = intent.getStringExtra("keterangan")
-        val sharedPreferences = getPreferences(Context.MODE_PRIVATE)
-        val id = sharedPreferences.getString("id","")
+        val sharedPreferences = getSharedPreferences("user_data",Context.MODE_PRIVATE)
+        val id = sharedPreferences.getString("id",null)
 
 
         // Convert harga to a formatted string
@@ -120,16 +121,17 @@ class FashionExploreCatalogActivity : AppCompatActivity() {
 
                 if (bag != null) {
                     bagAdd.setValue(bag).addOnSuccessListener{
-                        navigateToBagFragment()
+                        Toast.makeText(this@FashionExploreCatalogActivity, "Added To Bag", Toast.LENGTH_SHORT).show()
                     }.addOnFailureListener{
-                        navigateToLoginFragment()
+                        Toast.makeText(this@FashionExploreCatalogActivity, "Added Failed", Toast.LENGTH_SHORT).show()
                     }
                 } else {
                     // Handle the case where bag is null
                     navigateToLoginFragment()
                 }
             } else {
-                navigateToLoginFragment()
+                Toast.makeText(this@FashionExploreCatalogActivity, "Silahkan Login Terlebih Dahulu", Toast.LENGTH_SHORT).show()
+
             }
         }
     }
@@ -145,7 +147,7 @@ class FashionExploreCatalogActivity : AppCompatActivity() {
     }
 
     private fun navigateToLoginFragment(){
-        val myProfileFragment = LoginFragment()
+        val myProfileFragment = ExploreFragment()
         val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.frame_container, myProfileFragment)
         transaction.addToBackStack(null)
@@ -171,5 +173,3 @@ class FashionExploreCatalogActivity : AppCompatActivity() {
     }
 
 }
-
-

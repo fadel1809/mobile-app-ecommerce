@@ -1,12 +1,13 @@
-// FashionBagFragment.kt
 package id.ac.umn.mobileapp.bag.fashion
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.GridLayoutManager
@@ -19,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import id.ac.umn.mobileapp.R
 import id.ac.umn.mobileapp.checkout.CheckoutActivity
+import id.ac.umn.mobileapp.profile.LoginFragment
 import id.ac.umn.mobileapp.profile.MyProfileFragment
 import java.text.NumberFormat
 import java.util.Locale
@@ -43,8 +45,19 @@ class FashionBagFragment : Fragment() {
         recyclerView.adapter = adapter
 
         databaseReference = FirebaseDatabase.getInstance().getReference("bag")
+        val sharedPreferences = context?.getSharedPreferences("user_data", Context.MODE_PRIVATE)
+        val id = sharedPreferences?.getString("id", null)
+        if (id == null) {
 
-        fetchUserData()
+            Toast.makeText(requireContext(), "Login Terlebih dahulu", Toast.LENGTH_SHORT).show()
+//            val intent = Intent(requireContext(),MyProfileFragment::class.java)
+//            startActivity(intent)
+        }else{
+            fetchUserData()
+        }
+
+
+
 
         val btnCO: MaterialButton? = view?.findViewById(R.id.btnCheckout)
         btnCO?.setOnClickListener {
@@ -56,7 +69,8 @@ class FashionBagFragment : Fragment() {
             intent.putExtra("TOTAL_AMOUNT", totalAmount)
 
             // Pass data from the snapshot to CheckoutActivity
-            val fashionList = adapter.dataBagFashion // Assuming fashionList is the list containing snapshot data
+            val fashionList =
+                adapter.dataBagFashion // Assuming fashionList is the list containing snapshot data
             val dataBundle = Bundle()
 
             for (fashion in fashionList) {
@@ -77,6 +91,8 @@ class FashionBagFragment : Fragment() {
 
 
         return view
+
+
     }
 
     private fun fetchUserData() {
@@ -84,14 +100,19 @@ class FashionBagFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val tvTotal:TextView? =view?.findViewById(R.id.tvTotal)
                 val fashionList = mutableListOf<FashionBag>()
+                var total : Long = 0
                 for (userSnapshot in snapshot.children) {
                     val image = userSnapshot.child("image").getValue(String::class.java) ?: ""
                     val name = userSnapshot.child("productName").getValue(String::class.java) ?: ""
                     val harga = userSnapshot.child("harga").getValue(Long::class.java) ?: 0
                     val size = userSnapshot.child("selectedSize").getValue(String::class.java) ?: ""
                     val quantity = userSnapshot.child("quantity").getValue(String::class.java) ?: ""
-                    val qtyInt = quantity.toInt()
-                    var total : Long = 0
+                    val qtyInt = try{
+                        quantity.toInt()
+                    }catch (e: NumberFormatException){
+                        0
+                    }
+
                     val hargaPerItem :Long = harga * qtyInt
                     total  = total + hargaPerItem
                     tvTotal?.text = formatCurrency(total)
